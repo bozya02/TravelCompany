@@ -27,7 +27,16 @@ namespace TravelCompany.Pages
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            string login = tbLogin.Text;
+            string password = pbPassword.Password;
 
+            if ((App.user = DataAccess.GetUser(login, password)) == null)
+            {
+                MessageBox.Show("Неверный логин или пароль", "Ошибка");
+                return;
+            }
+
+            NavigationService.Navigate(new ToursListPage());
         }
 
         private void btnRegist_Click(object sender, RoutedEventArgs e)

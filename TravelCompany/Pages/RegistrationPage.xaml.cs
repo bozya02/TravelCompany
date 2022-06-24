@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TravelCompany.DB;
 
 namespace TravelCompany.Pages
 {
@@ -23,6 +24,34 @@ namespace TravelCompany.Pages
         public RegistrationPage()
         {
             InitializeComponent();
+        }
+
+        private void btnRegist_Click(object sender, RoutedEventArgs e)
+        {
+            User user = new User
+            {
+                Login = tbLogin.Text,
+                Password = pbPassword.Password,
+                RoleId = 1
+            };
+
+            string secondPassword = pbSecondPassword.Password;
+
+            if (user.Password != secondPassword)
+            {
+                MessageBox.Show("Пароли не совпадают", "Ошибка");
+                return;
+            }
+
+            if (!DataAccess.CheckLogin(user.Login))
+            {
+                MessageBox.Show("Такой логи занят", "Ошибка");
+                return;
+            }
+
+            DataAccess.SaveUser(user);
+
+            NavigationService.GoBack();
         }
     }
 }

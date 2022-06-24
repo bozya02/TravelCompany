@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using TravelCompany.DB;
 
 namespace TravelCompany
 {
@@ -13,5 +14,6 @@ namespace TravelCompany
     /// </summary>
     public partial class App : Application
     {
+        public static User user;
     }
 }

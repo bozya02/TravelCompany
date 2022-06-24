@@ -20,11 +20,11 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         
-        <TextBlock Text="Логин" Grid.Column="0" Grid.Row="0"/>
+        <TextBlock Text="Логин" Grid.Column="0" Grid.Row="0" FontSize="30"/>
         <TextBox x:Name="tbLogin" Grid.Column="1" Grid.Row="0"/>
 
-        <TextBlock Text="Пароль" Grid.Column="0" Grid.Row="1"/>
-        <PasswordBox x:Name="tbPassword" Grid.Column="1" Grid.Row="1"/>
+        <TextBlock Text="Пароль" Grid.Column="0" Grid.Row="1" FontSize="30"/>
+        <PasswordBox x:Name="pbPassword" Grid.Column="1" Grid.Row="1"/>
 
         <Button x:Name="btnLogin" Content="Авторизация" Grid.Column="0" Grid.Row="2" Click="btnLogin_Click"/>
         <Button x:Name="btnRegist" Content="Регистрация" Grid.Column="1" Grid.Row="2" Click="btnRegist_Click"/>

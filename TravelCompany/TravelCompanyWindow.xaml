@@ -12,8 +12,8 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock x:Name="tbTitle" Grid.Row="0"/>
-        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="5" Grid.Row="0">
+        <TextBlock x:Name="tbTitle" Grid.Row="0" FontSize="30"/>
+        <StackPanel x:Name="spButtons" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5" Grid.Row="0">
             <StackPanel.Resources>
                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                     <Setter Property="VerticalAlignment" Value="Center"/>

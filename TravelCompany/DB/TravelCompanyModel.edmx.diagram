@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2380d8d10dba45be82310723393d5b07" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="TravelCompanyModel.Country" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="TravelCompanyModel.Hotel" Width="1.5" PointX="5.25" PointY="4.5" />
+        <EntityTypeShape EntityType="TravelCompanyModel.PriceList" Width="1.5" PointX="10.5" PointY="7.5" />
+        <EntityTypeShape EntityType="TravelCompanyModel.Role" Width="1.5" PointX="8.25" PointY="0.75" />
+        <EntityTypeShape EntityType="TravelCompanyModel.Settlement" Width="1.5" PointX="3" PointY="4.375" />
+        <EntityTypeShape EntityType="TravelCompanyModel.sysdiagram" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="TravelCompanyModel.Tour" Width="1.5" PointX="8.25" PointY="3.75" />
+        <EntityTypeShape EntityType="TravelCompanyModel.Transport" Width="1.5" PointX="6" PointY="7.875" />
+        <EntityTypeShape EntityType="TravelCompanyModel.Type" Width="1.5" PointX="6" PointY="1.625" />
+        <EntityTypeShape EntityType="TravelCompanyModel.User" Width="1.5" PointX="10.5" PointY="4.5" />
+        <AssociationConnector Association="TravelCompanyModel.FK_Settlement_Country" />
+        <AssociationConnector Association="TravelCompanyModel.FK_Hotel_Settlement" />
+        <AssociationConnector Association="TravelCompanyModel.FK_PriceList_Tour" />
+        <AssociationConnector Association="TravelCompanyModel.FK_User_Role" />
+        <AssociationConnector Association="TravelCompanyModel.FK_Tour_Settlement" />
+        <AssociationConnector Association="TravelCompanyModel.FK_Tour_Transport" />
+        <AssociationConnector Association="TravelCompanyModel.FK_Tour_Type" />
+        <AssociationConnector Association="TravelCompanyModel.TourSettlement" />
+        <AssociationConnector Association="TravelCompanyModel.TourUser" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

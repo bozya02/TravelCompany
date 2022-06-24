@@ -30,7 +30,21 @@ namespace TravelCompany
 
         private void Frame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
-            tbTitle.Text = (frame.Content as Page).Title;
+            var content = frame.Content;
+            tbTitle.Text = (content as Page).Title;
+
+            if (content is Pages.AuthorizationPage)
+                spButtons.Visibility = Visibility.Hidden;
+            else if (content is Pages.RegistrationPage)
+            {
+                spButtons.Visibility = Visibility.Visible;
+                btnForward.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                spButtons.Visibility = Visibility.Visible;
+                btnForward.Visibility = Visibility.Visible;
+            }
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
