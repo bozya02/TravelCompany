@@ -42,7 +42,7 @@
         <TextBox Text="{Binding Tour.Name}" Grid.Row="0" Grid.Column="1"/>
 
         <TextBlock Text="Тип" Grid.Row="1" Grid.Column="0"/>
-        <ComboBox ItemsSource="{Binding Types}" SelectedItem="{Binding Tour.Type.Name}" Grid.Row="1" Grid.Column="1">
+        <ComboBox x:Name="cbTypes" SelectedItem="{Binding Tour.Type.Name}" Grid.Row="1" Grid.Column="1">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"/>
@@ -54,7 +54,7 @@
         <TextBox Text="{Binding Tour.Duration}" Grid.Row="2" Grid.Column="1"/>
 
         <TextBlock Text="Транспорт" Grid.Row="3" Grid.Column="0"/>
-        <ComboBox ItemsSource="{Binding Transports}" SelectedItem="{Binding Tour.Transport.Name}" Grid.Row="3" Grid.Column="1">
+        <ComboBox x:Name="cbTransports" SelectedItem="{Binding Tour.Transport.Name}" Grid.Row="3" Grid.Column="1">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"/>
@@ -63,7 +63,7 @@
         </ComboBox>
 
         <TextBlock Text="Старт" Grid.Row="4" Grid.Column="0"/>
-        <ComboBox ItemsSource="{Binding Settlements}" SelectedItem="{Binding Settlement.Name}" Grid.Row="4" Grid.Column="1">
+        <ComboBox x:Name="cbSettlements" SelectedItem="{Binding Tour.Settlement.Name}" Grid.Row="4" Grid.Column="1">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"/>

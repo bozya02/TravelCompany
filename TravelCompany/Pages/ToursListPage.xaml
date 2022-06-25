@@ -19,7 +19,7 @@
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      VerticalContentAlignment="Bottom"
                      materialDesign:HintAssist.Hint="Название"/>
-            <ComboBox
+            <ComboBox x:Name="cbTypes"
                 Width="100"
                 materialDesign:HintAssist.Hint="Тип"
                 ItemsSource="{Binding Types}">
@@ -29,7 +29,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <ComboBox
+            <ComboBox x:Name="cbSattlements"
                 Width="100"
                 materialDesign:HintAssist.Hint="Старт"
                 ItemsSource="{Binding Settlements}">
@@ -39,7 +39,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <ComboBox
+            <ComboBox x:Name="cbTransports"
                 Width="100"
                 materialDesign:HintAssist.Hint="Транспорт"
                 ItemsSource="{Binding Transports}">
@@ -62,7 +62,7 @@
                     <GridViewColumn Header="Тип" DisplayMemberBinding="{Binding Type.Name}"/>
                     <GridViewColumn Header="Длит." DisplayMemberBinding="{Binding Duration, StringFormat={}{0} дней}"/>
                     <GridViewColumn Header="Транспорт" DisplayMemberBinding="{Binding Transport.Name}"/>
-                    <GridViewColumn Header="Старт" DisplayMemberBinding="{Binding OutgoingPoint.Name}"/>
+                    <GridViewColumn Header="Старт" DisplayMemberBinding="{Binding Settlement.Name}"/>
                     <GridViewColumn Header="Пункты">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>

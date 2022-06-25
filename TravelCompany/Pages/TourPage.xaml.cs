@@ -32,11 +32,15 @@ namespace TravelCompany.Pages
 
             Tour = tour;
 
-            Settlements = DataAccess.GetSettlements();
-            Types = DataAccess.GetTypes();
-            Transports = DataAccess.GetTransports();
+            cbSettlements.ItemsSource = DataAccess.GetSettlements();
+            cbTypes.ItemsSource = DataAccess.GetTypes();
+            cbTransports.ItemsSource = DataAccess.GetTransports();
 
             this.DataContext = this;
+
+            cbSettlements.SelectedItem = tour.Settlement;
+            cbTransports.SelectedItem = tour.Transport;
+            cbTypes.SelectedItem = tour.Type;
         }
 
         protected override void OnInitialized(EventArgs e)
@@ -59,8 +63,6 @@ namespace TravelCompany.Pages
         {
             Tour.TravelPackageCount -= 1;
             DataAccess.SaveTour(Tour);
-
-            this.DataContext = this;
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -72,6 +74,10 @@ namespace TravelCompany.Pages
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            Tour.OutgoingPoint = (cbSettlements.SelectedItem as Settlement).Id;
+            Tour.TransportId = (cbTransports.SelectedItem as Transport).Id;
+            Tour.TypeId = (cbTypes.SelectedItem as DB.Type).Id;
+
             DataAccess.SaveTour(Tour);
             NavigationService.GoBack();
         }
