@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:TravelCompany.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -13,7 +14,47 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <ListView Grid.Row="1" ItemsSource="{Binding Tours}">
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" >
+            <TextBox FontSize="20" Width="200" Margin="10"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     VerticalContentAlignment="Bottom"
+                     materialDesign:HintAssist.Hint="Название"/>
+            <ComboBox
+                Width="100"
+                materialDesign:HintAssist.Hint="Тип"
+                ItemsSource="{Binding Types}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox
+                Width="100"
+                materialDesign:HintAssist.Hint="Старт"
+                ItemsSource="{Binding Settlements}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox
+                Width="100"
+                materialDesign:HintAssist.Hint="Транспорт"
+                ItemsSource="{Binding Transports}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <Button x:Name="btnCreateTour" Content="Создать тур" Margin="5" Padding="5" Click="btnCreateTour_Click"/>
+            <Button x:Name="btnCreatePticeList" Content="Создать прайс" Margin="5" Padding="5"/>
+        </StackPanel>
+
+        <ListView x:Name="lvTours" ItemsSource="{Binding Tours}" Grid.Row="2" SelectionChanged="ListView_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>

@@ -34,6 +34,12 @@
                 <Setter Property="VerticalAlignment" Value="Center"/>
                 <Setter Property="HorizontalAlignment" Value="Center"/>
                 <Setter Property="Height" Value="60"/>
+                <Setter Property="FontSize" Value="30"/>
+            </Style>
+
+            <Style TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignOutlinedComboBox}">
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Padding" Value="5"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>
