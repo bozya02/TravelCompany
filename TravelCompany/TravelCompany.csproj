@@ -131,6 +131,7 @@
     <Compile Include="Pages\ToursListPage.xaml.cs">
       <DependentUpon>ToursListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tour.cs" />
     <Compile Include="TravelCompanyWindow.xaml.cs">
       <DependentUpon>TravelCompanyWindow.xaml</DependentUpon>
     </Compile>

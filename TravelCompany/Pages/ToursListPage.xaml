@@ -15,14 +15,17 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" >
-            <TextBox FontSize="20" Width="200" Margin="10"
+            <TextBox x:Name="tbName" FontSize="20" Width="200"
+                     Margin="10"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      VerticalContentAlignment="Bottom"
-                     materialDesign:HintAssist.Hint="Название"/>
+                     materialDesign:HintAssist.Hint="Название"
+                     TextChanged="tbName_TextChanged"/>
             <ComboBox x:Name="cbTypes"
                 Width="100"
                 materialDesign:HintAssist.Hint="Тип"
-                ItemsSource="{Binding Types}">
+                ItemsSource="{Binding Types}"
+                SelectionChanged="FilterSelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}"/>
@@ -32,7 +35,8 @@
             <ComboBox x:Name="cbSattlements"
                 Width="100"
                 materialDesign:HintAssist.Hint="Старт"
-                ItemsSource="{Binding Settlements}">
+                ItemsSource="{Binding Settlements}"
+                SelectionChanged="FilterSelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}"/>
@@ -42,7 +46,8 @@
             <ComboBox x:Name="cbTransports"
                 Width="100"
                 materialDesign:HintAssist.Hint="Транспорт"
-                ItemsSource="{Binding Transports}">
+                ItemsSource="{Binding Transports}"
+                SelectionChanged="FilterSelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}"/>
@@ -63,7 +68,7 @@
                     <GridViewColumn Header="Длит." DisplayMemberBinding="{Binding Duration, StringFormat={}{0} дней}"/>
                     <GridViewColumn Header="Транспорт" DisplayMemberBinding="{Binding Transport.Name}"/>
                     <GridViewColumn Header="Старт" DisplayMemberBinding="{Binding Settlement.Name}"/>
-                    <GridViewColumn Header="Пункты">
+                    <GridViewColumn Header="Пункты" Width="200">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <ListView ItemsSource="{Binding Settlements}">

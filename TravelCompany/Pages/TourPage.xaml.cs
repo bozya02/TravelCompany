@@ -33,6 +33,7 @@ namespace TravelCompany.Pages
             Tour = tour;
 
             cbSettlements.ItemsSource = DataAccess.GetSettlements();
+            cbSettlement.ItemsSource = DataAccess.GetSettlements();
             cbTypes.ItemsSource = DataAccess.GetTypes();
             cbTransports.ItemsSource = DataAccess.GetTransports();
 
@@ -62,6 +63,7 @@ namespace TravelCompany.Pages
         private void btnBuy_Click(object sender, RoutedEventArgs e)
         {
             Tour.TravelPackageCount -= 1;
+            Tour.Users.Add(App.user);
             DataAccess.SaveTour(Tour);
         }
 
@@ -80,6 +82,31 @@ namespace TravelCompany.Pages
 
             DataAccess.SaveTour(Tour);
             NavigationService.GoBack();
+        }
+
+        private void cbDates_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var date = Convert.ToDateTime(cbDates.SelectedItem as DateTime?);
+            tbPrice.Text = Tour.PriceLists.FirstOrDefault(t => t.Date == date).Price.ToString();
+        }
+
+        private void cbSettlement_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var settlement = cbSettlement.SelectedItem as Settlement;
+
+            if (Tour.Settlements.FirstOrDefault(s => s.Id == settlement.Id) == null)
+                Tour.Settlements.Add(settlement);
+
+            lvSettlements.Items.Refresh();
+        }
+
+        private void lvSettlements_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var settlement = lvSettlements.SelectedItem as Settlement;
+
+            Tour.Settlements.Remove(settlement);
+
+            lvSettlements.Items.Refresh();
         }
     }
 }

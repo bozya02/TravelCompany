@@ -9,6 +9,9 @@ namespace TravelCompany
 {
     internal class DataAccess
     {
+        public delegate void NewItemAddedDeledate();
+        public static event NewItemAddedDeledate NewItemAddedEvent;
+
         public static List<Tour> GetTours()
         {
             return TravelCompanyEntities.GetContext().Tours.ToList().FindAll(p => !p.IsDeleted);
@@ -20,6 +23,8 @@ namespace TravelCompany
                 TravelCompanyEntities.GetContext().Tours.Add(tour);
 
             TravelCompanyEntities.GetContext().SaveChanges();
+
+            NewItemAddedEvent?.Invoke();
         }
 
         public static List<User> GetUsers()
