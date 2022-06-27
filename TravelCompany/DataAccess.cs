@@ -19,7 +19,7 @@ namespace TravelCompany
 
         public static void SaveTour(Tour tour)
         {
-            if (GetTours().Where(t => t.Id == tour.Id).Count() == 0)
+            if (GetTours().FirstOrDefault(t => t.Id == tour.Id) == null)
                 TravelCompanyEntities.GetContext().Tours.Add(tour);
 
             TravelCompanyEntities.GetContext().SaveChanges();
@@ -40,6 +40,16 @@ namespace TravelCompany
         public static bool CheckLogin(string login)
         {
             return GetUsers().Count(u => u.Login == login) == 0;
+        }
+
+        internal static void SavePriceList(PriceList priceList)
+        {
+            if (GetPriceLists().Where(t => t.Id == priceList.Id).Count() == 0)
+                TravelCompanyEntities.GetContext().PriceLists.Add(priceList);
+
+            TravelCompanyEntities.GetContext().SaveChanges();
+
+            NewItemAddedEvent?.Invoke();
         }
 
         public static void SaveUser(User user)
@@ -72,6 +82,11 @@ namespace TravelCompany
         public static List<Transport> GetTransports()
         {
             return TravelCompanyEntities.GetContext().Transports.ToList();
+        }
+
+        public static List<PriceList> GetPriceLists()
+        {
+            return TravelCompanyEntities.GetContext().PriceLists.ToList();
         }
     }
 }

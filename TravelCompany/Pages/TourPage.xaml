@@ -39,7 +39,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="Название" Grid.Row="0" Grid.Column="0"/>
-        <TextBox Text="{Binding Tour.Name}" Grid.Row="0" Grid.Column="1"/>
+        <TextBox x:Name="tbName" Text="{Binding Tour.Name}" Grid.Row="0" Grid.Column="1"/>
 
         <TextBlock Text="Тип" Grid.Row="1" Grid.Column="0"/>
         <ComboBox x:Name="cbTypes" SelectedItem="{Binding Tour.Type.Name}" Grid.Row="1" Grid.Column="1">
@@ -51,7 +51,7 @@
         </ComboBox>
 
         <TextBlock Text="Продолжительность" Grid.Row="2" Grid.Column="0"/>
-        <TextBox Text="{Binding Tour.Duration}" Grid.Row="2" Grid.Column="1"/>
+        <TextBox x:Name="tbDuration" Text="{Binding Tour.Duration}" Grid.Row="2" Grid.Column="1"/>
 
         <TextBlock Text="Транспорт" Grid.Row="3" Grid.Column="0"/>
         <ComboBox x:Name="cbTransports" SelectedItem="{Binding Tour.Transport.Name}" Grid.Row="3" Grid.Column="1">
@@ -72,7 +72,7 @@
         </ComboBox>
 
         <TextBlock Text="Количесвто путевок" Grid.Row="5" Grid.Column="0"/>
-        <TextBox Text="{Binding Tour.TravelPackageCount}" Grid.Row="5" Grid.Column="1"/>
+        <TextBox x:Name="tbCount" Text="{Binding Tour.TravelPackageCount}" Grid.Row="5" Grid.Column="1"/>
 
         <TextBlock Text="Цена" Grid.Row="6" Grid.Column="0"/>
         <TextBox x:Name="tbPrice" Grid.Row="6" Grid.Column="1"/>
@@ -80,13 +80,17 @@
         <ComboBox x:Name="cbDates"
             Width="150"
             materialDesign:HintAssist.Hint="Дата"
-            ItemsSource="{Binding Dates}"
-            ItemStringFormat="dd.MM.yyyy"
+            ItemsSource="{Binding Tour.PriceLists}"
             SelectionChanged="cbDates_SelectionChanged"
             Grid.Column="2">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Date, StringFormat=dd.MM.yyyy}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <StackPanel Orientation="Vertical" Grid.RowSpan="4" Grid.Row="1" Grid.Column="2">
+        <StackPanel x:Name="spSettlement" Orientation="Vertical" Grid.RowSpan="4" Grid.Row="1" Grid.Column="2">
             <TextBlock Text="Пункты"/>
             <ListView x:Name="lvSettlements" Height="100" ItemsSource="{Binding Tour.Settlements}" SelectionChanged="lvSettlements_SelectionChanged">
                 <ListView.ItemTemplate>

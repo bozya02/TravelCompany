@@ -110,5 +110,10 @@ namespace TravelCompany.Pages
                 btnCreateTour.Visibility = Visibility.Hidden;
             }
         }
+
+        private void btnCreatePticeList_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new PriceListPage());
+        }
     }
 }

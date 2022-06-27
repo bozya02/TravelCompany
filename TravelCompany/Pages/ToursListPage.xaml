@@ -56,7 +56,7 @@
             </ComboBox>
 
             <Button x:Name="btnCreateTour" Content="Создать тур" Margin="5" Padding="5" Click="btnCreateTour_Click"/>
-            <Button x:Name="btnCreatePticeList" Content="Создать прайс" Margin="5" Padding="5"/>
+            <Button x:Name="btnCreatePticeList" Content="Создать прайс" Margin="5" Padding="5" Click="btnCreatePticeList_Click"/>
         </StackPanel>
 
         <ListView x:Name="lvTours" ItemsSource="{Binding Tours}" Grid.Row="2" SelectionChanged="ListView_SelectionChanged">

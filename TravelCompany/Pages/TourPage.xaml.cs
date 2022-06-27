@@ -38,10 +38,12 @@ namespace TravelCompany.Pages
             cbTransports.ItemsSource = DataAccess.GetTransports();
 
             this.DataContext = this;
-
-            cbSettlements.SelectedItem = tour.Settlement;
-            cbTransports.SelectedItem = tour.Transport;
-            cbTypes.SelectedItem = tour.Type;
+            if (Tour != null)
+            {
+                cbSettlements.SelectedItem = tour.Settlement;
+                cbTransports.SelectedItem = tour.Transport;
+                cbTypes.SelectedItem = tour.Type;
+            }
         }
 
         protected override void OnInitialized(EventArgs e)
@@ -52,11 +54,18 @@ namespace TravelCompany.Pages
             {
                 btnSave.Visibility = Visibility.Hidden;
                 btnDelete.Visibility = Visibility.Hidden;
-                
-                grid.IsEnabled = false;
-                btnBuy.IsEnabled = true;
 
-                tbPrice.Text = Tour.PriceLists.LastOrDefault().Price.ToString();
+                tbCount.IsEnabled = false;
+                tbDuration.IsEnabled = false;
+                tbName.IsEnabled = false;
+                tbPrice.IsEnabled = false;
+                cbSettlement.IsEnabled = false;
+                cbTransports.IsEnabled = false;
+                cbTypes.IsEnabled = false;
+                spSettlement.IsEnabled = false;
+
+                btnBuy.IsEnabled = true;
+                cbDates.IsEnabled = true;
             }
         }
 
@@ -86,8 +95,8 @@ namespace TravelCompany.Pages
 
         private void cbDates_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var date = Convert.ToDateTime(cbDates.SelectedItem as DateTime?);
-            tbPrice.Text = Tour.PriceLists.FirstOrDefault(t => t.Date == date).Price.ToString();
+            var priceList = cbDates.SelectedItem as PriceList;
+            tbPrice.Text = priceList.Price.ToString();
         }
 
         private void cbSettlement_SelectionChanged(object sender, SelectionChangedEventArgs e)

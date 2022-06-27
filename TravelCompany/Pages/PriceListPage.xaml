@@ -1,0 +1,70 @@
+﻿<Page x:Class="TravelCompany.Pages.PriceListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:TravelCompany.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Прайс-лсит">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="lvPriceList" ItemsSource="{Binding Tours}">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="2"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}"/>
+                        <ListView ItemsSource="{Binding PriceLists}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                        <Run Text="{Binding Date}"/>
+                                        <Run Text="{Binding Price, StringFormat={}{0} руб.}"/>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <ComboBox x:Name="cbTour"
+                Width="100"
+                materialDesign:HintAssist.Hint="Тур"
+                ItemsSource="{Binding Tours}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <DatePicker
+                    x:Name="dpDate"
+                    Width="250"
+                    Height="50"
+                    materialDesign:HintAssist.Hint="Дата"
+                    Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+                <TextBox x:Name="tbPrice" FontSize="20" Width="200"
+                     Margin="10"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     VerticalContentAlignment="Bottom"
+                     materialDesign:HintAssist.Hint="Цена"/>
+            </StackPanel>
+            <Button x:Name="btnSave" Content="Сохранить" Click="btnSave_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

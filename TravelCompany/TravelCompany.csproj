@@ -122,6 +122,9 @@
     <Compile Include="Pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PriceListPage.xaml.cs">
+      <DependentUpon>PriceListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
@@ -131,7 +134,6 @@
     <Compile Include="Pages\ToursListPage.xaml.cs">
       <DependentUpon>ToursListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tour.cs" />
     <Compile Include="TravelCompanyWindow.xaml.cs">
       <DependentUpon>TravelCompanyWindow.xaml</DependentUpon>
     </Compile>
@@ -140,6 +142,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\AuthorizationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PriceListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
